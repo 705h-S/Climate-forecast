@@ -27,22 +27,30 @@
     <div class="container-fluid">
       <div class="row">
        <!-- start coloum "start" -->
-      <div class="col-4 col-md-2 " style="background-color: #f5dada;">
+      <div class="col-4 col-md-3 " style="background-color: #f5dada;">
 
-      <form class="d-flex mt-3">
-        <input class="form-control me-2" type="search" placeholder="Search for a City" aria-label="Search">
+      <form class="d-flex my-3">
+        <input id="userCity" class="form-control me-2" type="search" placeholder="Search for a City" aria-label="Search">
         <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
       </form>
+
+      <div class="card" style="width: 16rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item hide"></li>
+         
+        </ul>
+      </div>
+      
 
     </div>
 
     
       <!--end coloum "weather display"  -->
-    <div class="col-8 col-md-10">
+    <div class="col-8 col-md-9 hide">
 
       <div class="card mt-3 ps-3" style="height: 500">
         <div class="card-body">
-          <h5 class="card-title fs-3 py-4">city name</h5>
+          <h5 id="cityDate" class="card-title fs-3 py-4">city name</h5>
           <p class="card-text py-2"> Temprature:</p>
           <p class="card-text py-2">Humidity:</p>
           <p class="card-text pb-4">UV index:</p>
