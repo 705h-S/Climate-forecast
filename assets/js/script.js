@@ -17,6 +17,8 @@ var date = moment().format("M/D/YYYY");
 // making an empty array to have the city names be displayed 
 var cityList = [];
 
+
+
 console.log(date)
 
 // -- I'll start with having the user input be locally saved & displayed.
@@ -31,21 +33,25 @@ console.log(date)
         // pushes user input to array 
         cityList.push(userInput)
 
-        // $("#").text(cityList).val()
-
         // Changes main weather card with date.
         $("#cityDate").text(userInput + " (" + date + ")").val()
         console.log(cityList);
         
-        addList()
-
+        //  Saves city names at an array 
+        localStorage.setItem("city", JSON.stringify(cityList));
+        var cityArr = JSON.parse(localStorage.getItem("city"));
+       
         // City name gets added to list 
+        addList()
         function addList() {
             var li = $("<li>")
-   
+    
             $(".list-group").append(li)
-            li.text(userInput).addClass("list-group-item");
+            li.text(cityArr).addClass("list-group-item");
+            
         }
+        
     })
 
     
+   
