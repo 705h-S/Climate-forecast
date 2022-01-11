@@ -19,7 +19,10 @@ var cityList = [];
 
 
 
+
+
 console.log(date)
+
 
 // -- I'll start with having the user input be locally saved & displayed.
 
@@ -30,9 +33,12 @@ console.log(date)
         // user input
         var userInput = $("#userCity").val()
 
+        var url5day = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&appid=d4e6d157f40579742be0d18404711934&units=imperial&cnt=5"
+
         // pushes user input to array 
         cityList.push(userInput)
 
+    
         // Changes main weather card with date.
         $("#cityDate").text(userInput + " (" + date + ")").val()
         console.log(cityList);
@@ -41,17 +47,36 @@ console.log(date)
         localStorage.setItem("city", JSON.stringify(cityList));
         var cityArr = JSON.parse(localStorage.getItem("city"));
        
+
         // City name gets added to list 
         addList()
         function addList() {
             var li = $("<li>")
     
             $(".list-group").append(li)
-            li.text(cityArr).addClass("list-group-item");
+            li.text(userInput).addClass("list-group-item");
             
         }
         
+          
+        // $.ajax({
+        //     url: url5day,
+        //     method: "GET"
+        //   }).then(function(response) {
+        //     console.log(response);
+        //     console.log(response.list[0].dt_txt)
+        //   });
+
+          fiveDayFC()
     })
 
-    
+     function fiveDayFC (){
+
+        $("#plus1").text(moment().add(1,'d').format("M/D/YYYY"))
+        $("#plus2").text(moment().add(2,'d').format("M/D/YYYY"))
+        $("#plus3").text(moment().add(3,'d').format("M/D/YYYY"))
+        $("#plus4").text(moment().add(4,'d').format("M/D/YYYY"))
+        $("#plus5").text(moment().add(5,'d').format("M/D/YYYY"))
+     }
+   
    
