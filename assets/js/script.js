@@ -19,7 +19,7 @@ var cityList = [];
 
 
 
-
+// api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
 
 console.log(date)
 
@@ -33,7 +33,7 @@ console.log(date)
         // user input
         var userInput = $("#userCity").val()
 
-        var url5day = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&appid=d4e6d157f40579742be0d18404711934&units=imperial&cnt=5"
+        var url5day = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=d4e6d157f40579742be0d18404711934&units=imperial"
 
         // pushes user input to array 
         cityList.push(userInput)
@@ -58,18 +58,31 @@ console.log(date)
             
         }
         
-          
-        // $.ajax({
-        //     url: url5day,
-        //     method: "GET"
-        //   }).then(function(response) {
-        //     console.log(response);
-        //     console.log(response.list[0].dt_txt)
-        //   });
+        //   main temp
+        $.ajax({
+            url: url5day,
+            method: "GET"
+          }).then(function(data) {
+            console.log(data);
+            var lat = (data.coord.lat)
+            var lon = (data.coord.lon)
+            $("#mainTemp").text("Temprature: " + data.main.temp + "°F")
+            $("#mainHum").text("Humidity: " + data.main.humidity + "%")
+
+             $.ajax({
+              url: "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat +"&lon="+ lon +"&exclude=hourly,minutely,alerts&appid=d4e6d157f40579742be0d18404711934&units=imperial"
+          }).then(function(response) {
+            console.log(response)
+            $("#mainUVI").text("UV index: " + response.current.uvi)
+            $("#mainWind").text("Wind Speed " + response.current.wind_speed + " MPH")
+
+          });
+        });
 
           fiveDayFC()
     })
 
+    // displays 5 days in advanced. 
      function fiveDayFC (){
 
         $("#plus1").text(moment().add(1,'d').format("M/D/YYYY"))
