@@ -75,6 +75,17 @@ console.log(date)
             console.log(response)
             $("#mainUVI").text("UV index: " + response.current.uvi)
             $("#mainWind").text("Wind Speed " + response.current.wind_speed + " MPH")
+            // 5 day forecast
+            $("#oneTemp").text("Temp: " + response.daily[0].temp.day + "°F")
+            $("#oneHum").text("Humidity: " + response.daily[0].humidity + "%")
+            $("#twoTemp").text("Temp: " + response.daily[1].temp.day + "°F")
+            $("#twoHum").text("Humidity: " + response.daily[1].humidity + "%")
+            $("#3Temp").text("Temp: " + response.daily[2].temp.day + "°F")
+            $("#3Hum").text("Humidity: " + response.daily[2].humidity + "%")
+            $("#4Temp").text("Temp: " + response.daily[3].temp.day + "°F")
+            $("#4Hum").text("Humidity: " + response.daily[3].humidity + "%")
+            $("#5Temp").text("Temp: " + response.daily[4].temp.day + "°F")
+            $("#5Hum").text("Humidity: " + response.daily[4].humidity + "%")
 
           });
         });
