@@ -33,6 +33,12 @@ console.log(date)
         // user input
         var userInput = $("#userCity").val()
 
+
+        if (userInput === " "){
+        alert("enter a City Name");
+        }
+
+
         var url5day = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=d4e6d157f40579742be0d18404711934&units=imperial"
 
         // pushes user input to array 
@@ -55,6 +61,7 @@ console.log(date)
     
             $(".list-group").append(li)
             li.text(userInput).addClass("list-group-item");
+
             
         }
         
@@ -74,6 +81,16 @@ console.log(date)
           }).then(function(response) {
             console.log(response)
             $("#mainUVI").text("UV index: " + response.current.uvi)
+              // When UV Index is good, shows green, when ok shows yellow, when bad shows red
+              if (response.current.uvi < 5 ) {
+                $("span").addClass("rounded-pill bg-success");
+            }
+            else if (response.current.uvi < 9) {
+                $("span").addClass("badge rounded-pill bg-warning text-dark");
+            }
+            else {
+                $("span").addClass("rounded-pill bg-danger");
+            }
             $("#mainWind").text("Wind Speed " + response.current.wind_speed + " MPH")
             // 5 day forecast
             $("#oneTemp").text("Temp: " + response.daily[0].temp.day + "°F")
