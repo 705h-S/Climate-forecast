@@ -26,7 +26,8 @@ console.log(date)
 
 // -- I'll start with having the user input be locally saved & displayed.
 
-    $(".btn").click(function(){
+    $(".btn").click(function(event){
+      event.preventDefault();
         // Displays jumbotron and forecast 
         $("div").removeClass("hide")
 
