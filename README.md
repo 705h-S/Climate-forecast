@@ -30,7 +30,7 @@
 ---
 ## Deployed Link
 
-* [Weather Dashboard](#)
+* [Weather Dashboard](https://705h-s.github.io/Climate-forecast/)
 
 ![website](assets/images/fullsite.png)
 
