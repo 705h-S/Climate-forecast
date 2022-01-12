@@ -19,6 +19,7 @@ var cityList = [];
 
 
 
+
 // api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
 
 console.log(date)
@@ -74,6 +75,8 @@ console.log(date)
             console.log(data);
             var lat = (data.coord.lat)
             var lon = (data.coord.lon)
+            var img = (data.weather[0].icon)
+            $("#mainIMG").attr("src","https://openweathermap.org/img/wn/"+ img + "@2x.png");
             $("#mainTemp").text("Temprature: " + data.main.temp + "°F")
             $("#mainHum").text("Humidity: " + data.main.humidity + "%")
 
@@ -104,7 +107,13 @@ console.log(date)
             $("#4Hum").text("Humidity: " + response.daily[3].humidity + "%")
             $("#5Temp").text("Temp: " + response.daily[4].temp.day + "°F")
             $("#5Hum").text("Humidity: " + response.daily[4].humidity + "%")
-
+            // 5 day forecast img
+            $("#mainIMG1").attr("src","https://openweathermap.org/img/wn/"+ response.daily[0].weather[0].icon + "@2x.png");
+            $("#mainIMG2").attr("src","https://openweathermap.org/img/wn/"+ response.daily[1].weather[0].icon + "@2x.png");
+            $("#mainIMG3").attr("src","https://openweathermap.org/img/wn/"+ response.daily[2].weather[0].icon + "@2x.png");
+            $("#mainIMG4").attr("src","https://openweathermap.org/img/wn/"+ response.daily[3].weather[0].icon + "@2x.png");
+            $("#mainIMG5").attr("src","https://openweathermap.org/img/wn/"+ response.daily[4].weather[0].icon + "@2x.png");
+    
           });
         });
 
