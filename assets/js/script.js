@@ -36,7 +36,7 @@ console.log(date)
         var userInput = $("#userCity").val()
 
 
-        if (userInput === " "){
+        if (userInput === ""){
         alert("enter a City Name");
         }
 
@@ -53,8 +53,9 @@ console.log(date)
         
         //  Saves city names at an array 
         localStorage.setItem("city", JSON.stringify(cityList));
-        var cityArr = JSON.parse(localStorage.getItem("city"));
+        var cityArray = JSON.parse(localStorage.getItem("city"));
        
+      
 
         // City name gets added to list 
         addList()
@@ -63,6 +64,7 @@ console.log(date)
     
             $(".list-group").append(li)
             li.text(userInput).addClass("list-group-item");
+           
 
             
         }
